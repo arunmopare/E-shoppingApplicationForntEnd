@@ -80,22 +80,30 @@ const Signup = () => {
 
   const successMessage = () => {
     return (
-      <div
-        className='alert alert-success'
-        style={{ display: success ? "" : "none" }}
-      >
-        New Accout was created successfully Please{" "}
-       <Link to="/signin">Login Here</Link>
+      <div className='row'>
+        <div className='col-md-6 offset-sm-3 text-left'>
+          <div
+            className='alert alert-success'
+            style={{ display: success ? "" : "none" }}
+          >
+            New Accout was created successfully Please{" "}
+            <Link to='/signin'>Login Here</Link>
+          </div>
+        </div>
       </div>
     );
   };
   const errorMessage = () => {
     return (
-      <div
-        className='alert alert-danger'
-        style={{ display: error ? "" : "none" }}
-      >
-        {error}
+      <div className='row'>
+        <div className='col-md-6 offset-sm-3 text-left'>
+          <div
+            className='alert alert-danger'
+            style={{ display: error ? "" : "none" }}
+          >
+            {error}
+          </div>
+        </div>
       </div>
     );
   };
