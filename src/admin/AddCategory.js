@@ -5,7 +5,7 @@ import { isAuthenticated } from "../auth/helper";
 import { createCategory } from "./helper/adminapicall";
 
 const AddCategory = () => {
-  const [name, setname] = useState("initialState");
+  const [name, setname] = useState("");
   const [error, seterror] = useState(false);
   const [success, setsuccess] = useState(false);
   const { user, token } = isAuthenticated();
@@ -27,9 +27,29 @@ const AddCategory = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     seterror("");
-    setsuccess(false); 
+    setsuccess(false);
 
-    //fire the back end request
+    createCategory(user._id, token, { name }).then((data) => {
+      if (data.error) {
+        seterror(true);
+      } else {
+        seterror("");
+        setsuccess(true);
+        setname("");
+      }
+    });
+  };
+
+  const successMessage = () => {
+    if (success) {
+      return <h4 className='text-success'>Category Created Successully</h4>;
+    }
+  };
+
+  const errorMessage = () => {
+    if (error) {
+      return <h4 className='text-danger'>Failed to Create Category</h4>;
+    }
   };
 
   const myCategoryForm = () => {
@@ -63,7 +83,8 @@ const AddCategory = () => {
       <div className='row bg-white rounded'>
         <div className='col-md-8 offset-md-2'>
           <h1>
-            {myCategoryForm()} {goback()}
+            {myCategoryForm()} {goback()} {errorMessage()}
+            {successMessage()}
           </h1>
         </div>
       </div>
