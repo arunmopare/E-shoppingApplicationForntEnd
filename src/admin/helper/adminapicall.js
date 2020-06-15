@@ -19,7 +19,7 @@ export const createCategory = (userId, token, category) => {
 };
 
 //get all categories
-getAllcategories = () => {
+const getAllcategories = () => {
   return fetch(`${API}/categories`, {
     method: "GET",
   })
@@ -31,6 +31,7 @@ getAllcategories = () => {
 
 //product calls
 
+//create a product
 export const createProduct = (userId, token, product) => {
   return (fetch(`${API}/product/create/${userId}`),
   {
@@ -46,13 +47,57 @@ export const createProduct = (userId, token, product) => {
     })
     .catch((err) => console.log(err));
 };
-
-getAllProducts = () => {
-    return fetch(`${API}/products`, {
-      method: "GET",
+//get all products
+const getAllProducts = () => {
+  return fetch(`${API}/products`, {
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
     })
-      .then((response) => {
-        return response.json();
-      })
-      .catch((err) => console.log(err));
-  };
+    .catch((err) => console.log(err));
+};
+//delete products
+
+export const deleteProduct = (productId, userId, token) => {
+  return (fetch(`${API}/product/${productId}/${userId}`),
+  {
+    method: "DELETE",
+    headers: {
+      Accept: "aaplication.json",
+      Authorization: `Bearer ${token}`,
+    }
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+//get pproduscts
+export const getProduct = (productId) => {
+  return (fetch`${API}/product/${productId}`,
+  {
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+//update product
+export const updateAProduct = (productId, userId, token, product) => {
+  return (fetch(`${API}/product/${productId}/${userId}`),
+  {
+    method: "PUT",
+    headers: {
+      Accept: "aaplication.json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: product,
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
