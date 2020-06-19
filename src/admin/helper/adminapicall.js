@@ -19,7 +19,7 @@ export const createCategory = (userId, token, category) => {
 };
 
 //get all categories
-const getAllcategories = () => {
+export const getAllcategories = () => {
   return fetch(`${API}/categories`, {
     method: "GET",
   })
@@ -33,8 +33,7 @@ const getAllcategories = () => {
 
 //create a product
 export const createProduct = (userId, token, product) => {
-  return (fetch(`${API}/product/create/${userId}`),
-  {
+  return fetch(`${API}/product/create/${userId}`, {
     method: "POST",
     headers: {
       Accept: "aaplication.json",
@@ -48,7 +47,7 @@ export const createProduct = (userId, token, product) => {
     .catch((err) => console.log(err));
 };
 //get all products
-const getAllProducts = () => {
+export const getAllProducts = () => {
   return fetch(`${API}/products`, {
     method: "GET",
   })
@@ -66,7 +65,7 @@ export const deleteProduct = (productId, userId, token) => {
     headers: {
       Accept: "aaplication.json",
       Authorization: `Bearer ${token}`,
-    }
+    },
   })
     .then((response) => {
       return response.json();
