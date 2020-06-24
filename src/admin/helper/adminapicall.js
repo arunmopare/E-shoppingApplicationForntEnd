@@ -59,8 +59,7 @@ export const getAllProducts = () => {
 //delete products
 
 export const deleteProduct = (productId, userId, token) => {
-  return (fetch(`${API}/product/${productId}/${userId}`),
-  {
+  return fetch(`${API}/product/${productId}/${userId}`, {
     method: "DELETE",
     headers: {
       Accept: "aaplication.json",
@@ -75,7 +74,7 @@ export const deleteProduct = (productId, userId, token) => {
 
 //get pproduscts
 export const getProduct = (productId) => {
-  return (fetch`${API}/product/${productId}`,
+  return fetch(`${API}/product/${productId}`,
   {
     method: "GET",
   })
@@ -86,7 +85,7 @@ export const getProduct = (productId) => {
 };
 //update product
 export const updateAProduct = (productId, userId, token, product) => {
-  return (fetch(`${API}/product/${productId}/${userId}`),
+  return fetch(`${API}/product/${productId}/${userId}`,
   {
     method: "PUT",
     headers: {
