@@ -68,9 +68,9 @@ const AdminDashBoard = () => {
       className='container bg-success p-4'
     >
       <div className='row'>
-        <div className='col-3'>{admintLHS()}</div>
+        <div className='col-md-3'>{admintLHS()}</div>
 
-        <div className='col-9'>{adminRHS()}</div>
+        <div className='col-md-9'>{adminRHS()}</div>
       </div>
     </Base>
   );

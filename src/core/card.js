@@ -45,7 +45,7 @@ const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
     );
   };
   return (
-    <div className='card text-white bg-dark border border-info '>
+    <div className='card text-white bg-dark border border-info col-xs-12 col-sm-12 '>
       <div className='card-header lead'>{cardTitle}</div>
       <div className='card-body'>
       {getRedirect(redirect)}

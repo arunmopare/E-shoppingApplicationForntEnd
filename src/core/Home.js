@@ -22,16 +22,18 @@ export default function Home() {
     loadAllProducts();
   }, []);
   return (
-    <Base title='Home Page' description='Welcome to T-shirt Store'>
-        <h1 className='text-white text-center mb-4'>All Of TS</h1>
+    <Base title='Home Page' description='Welcome to the Tshirt Store'>
       <div className='row text-center'>
-        {products.map((prduct, index) => {
-          return (
-            <div key={index} className='col-4 mb-4'>
-              <Card product ={prduct} />
-            </div>
-          );
-        })}
+        <h1 className='text-white'>All of tshirts</h1>
+        <div className='row'>
+          {products.map((product, index) => {
+            return (
+              <div key={index} className='col-md-4 col-sm-12 col-xs-12 mb-4'>
+                <Card product={product} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Base>
   );
