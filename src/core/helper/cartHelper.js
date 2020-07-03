@@ -30,7 +30,7 @@ export const removeItemFromCart = (productId) => {
       cart = JSON.parse(localStorage.getItem("cart"));
     }
     cart.map((product, i) => {
-      if (product.id === productId) {
+      if (product._id === productId) {
         cart.splice(i, 1);
       }
     });

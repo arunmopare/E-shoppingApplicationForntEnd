@@ -7,10 +7,11 @@ import { loadCart } from "./helper/cartHelper";
 
 const Cart = () => {
   const [products, setproducts] = useState([]);
+  const [reload, setreload] = useState(false);
 
   useEffect(() => {
     setproducts(loadCart());
-  }, []);
+  }, [reload]);
 
   const loadAllProducts = () => {
     return (
@@ -22,6 +23,8 @@ const Cart = () => {
             product={product}
             removeFromCart={true}
             addtoCart={false}
+            setreload={setreload}
+            reload={reload}
           />
         ))}
       </div>
