@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ImageHelper from "../admin/helper/ImageHelper";
 import { Redirect } from "react-router-dom";
-import { addItemToCart } from "./helper/cartHelper";
+import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
 const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
   const [redirect, setredirect] = useState(false);
-  const [count, setcount] = useState(product.count)
+  const [count, setcount] = useState(product.count);
 
   const cardTitle = product ? product.name : "A Photo From DB";
   const cardDescription = product ? product.description : "Default Description";
@@ -36,7 +36,9 @@ const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
     return (
       removeFromCart && (
         <button
-          onClick={() => {}}
+          onClick={() => {
+            removeItemFromCart(product._id);
+          }}
           className='btn btn-block btn-outline-danger mt-2 mb-2'
         >
           Remove from cart
@@ -48,7 +50,7 @@ const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
     <div className='card text-white bg-dark border border-info col-xs-12 col-sm-12 '>
       <div className='card-header lead'>{cardTitle}</div>
       <div className='card-body'>
-      {getRedirect(redirect)}
+        {getRedirect(redirect)}
         <ImageHelper product={product}></ImageHelper>
         <p className='lead bg-success font-weight-normal text-wrap'>
           {cardDescription}
